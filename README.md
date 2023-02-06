@@ -85,6 +85,13 @@ Segment forward:
 443行改成：
 # 1 8400 85  1 8400 32 --> output0: 1 8400 117  output1:1 32 160 160
 return (torch.cat([x, torch.transpose(mc, 2, 1)], 2), p) if self.export else (torch.cat([x[0], mc], 1), (x[1], mc, p))
+
+export.py:
+from ultralytics import YOLO
+model = YOLO("weights/yolov8s-seg.pt") 
+success = model.export(mode='export',format="onnx", opset=16, simplify=True) 
+
+python export.py
 ```
 
 ![](./workspace/yolov8_onnx_seg_cut.png)
@@ -97,8 +104,7 @@ trtexec --onnx=xxx.onnx --saveEngine=xxx.engine --fp32
 trtexec --onnx=xxx.onnx --saveEngine=xxx.engine --fp16
 ```
 
-
-### RUN
+### Inference
 
 #### Det
 
