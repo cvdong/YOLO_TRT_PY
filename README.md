@@ -83,10 +83,13 @@ trtexec --onnx=xxx.onnx --saveEngine=xxx.engine --fp16
 
 python Inference_trt_det.py
 
+![](./workspace/result_det/zidane.jpg)
+
 ### Seg
 
 python Inference_trt_seg.py
 
-![](./workspace/result/zidane.jpg)
+![](./workspace/result_seg/dog.jpg)
+
 
 记得star :heartpulse: 
