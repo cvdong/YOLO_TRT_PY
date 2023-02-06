@@ -68,7 +68,22 @@ python export.py
 
 ## Seg
 
---soon
+YOLOV5 onnx:
+
+```
+https://github.com/ultralytics/yolov5
+python export.py --weights weights/yolov5s-seg.pt --simplify
+```
+![](./workspace/yolov5s_onnx_seg_cut.png)
+
+YOLOv8 onnx:
+```
+pip install ultralytics
+
+```
+
+![](./workspace/yolov8_onnx_seg_cut.png)
+
 
 ### Engine
 onnx 生成 engine 常用方案：
@@ -76,6 +91,7 @@ onnx 生成 engine 常用方案：
 trtexec --onnx=xxx.onnx --saveEngine=xxx.engine --fp32
 trtexec --onnx=xxx.onnx --saveEngine=xxx.engine --fp16
 ```
+
 
 ### RUN
 
