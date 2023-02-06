@@ -403,7 +403,8 @@ def inference_image():
         
         cv2.waitKey(0)
     
-# inference viedeo  
+    
+# inference video  
 def inference_video():
     classes_name = list(map(lambda x:x.strip(), open('workspace/coco.names', 'r').readlines()))
     color = Colors()
@@ -436,7 +437,7 @@ def inference_video():
     cv2.destroyAllWindows()
     
         
-# inference videmo mp  
+# inference video mp  
 def inference_video_mp():
     
     classes = list(map(lambda x:x.strip(), open('workspace/coco.names', 'r').readlines()))
