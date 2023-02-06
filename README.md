@@ -4,13 +4,12 @@
 
  该REPO功能描述：
  - 支持image和video 推理；
- - 支持YOLOV5 V6 V7 V8 推理；
+ - 支持YOLOV5 V6 V7 V8 Detection Segmentation推理；
  - TRT模型加速PYTHON 版本，友好的封装格式，便于学习
 
 ### MY ENVIRONMENT
 
 - cuda 11.7
-- cudnn 8.4
 - opencv 4.6
 - tensorrt 8.4
 - pycuda
@@ -46,6 +45,7 @@ YOLOV8 onnx:
 pip install ultralytics
 
 modules.py
+Detect forward:
 410行改成：
 # 1 84 8400 --> 1 85 8400
 y = torch.cat((dbox, torch.ones(1, 1, 8400), cls.sigmoid()), 1)
@@ -79,7 +79,12 @@ python export.py --weights weights/yolov5s-seg.pt --simplify
 YOLOv8 onnx:
 ```
 pip install ultralytics
+modules.py
+Segment forward:
 
+443行改成：
+# 1 8400 85  1 8400 32 --> output0: 1 8400 117  output1:1 32 160 160
+return (torch.cat([x, torch.transpose(mc, 2, 1)], 2), p) if self.export else (torch.cat([x[0], mc], 1), (x[1], mc, p))
 ```
 
 ![](./workspace/yolov8_onnx_seg_cut.png)
@@ -108,4 +113,4 @@ python Inference_trt_seg.py
 ![](./workspace/result_seg/dog.jpg)
 
 
-记得star :heartpulse: 
+有帮助------->记得star :heartpulse: 
