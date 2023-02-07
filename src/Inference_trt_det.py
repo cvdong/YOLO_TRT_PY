@@ -49,7 +49,7 @@ trt.init_libnvinfer_plugins(None, "")
 Parser = argparse.ArgumentParser()
 Parser.add_argument('--engine_path', type=str, default='workspace/yolov5s_fp16.engine')
 Parser.add_argument('--image_path', type=str, default='workspace/inference')
-Parser.add_argument('--result_path', type=str, default='workspace/result')
+Parser.add_argument('--result_path', type=str, default='workspace/result_det')
 args = Parser.parse_args()
 
 
